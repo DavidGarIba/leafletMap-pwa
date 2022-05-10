@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lab #4</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;900&display=swap" rel="stylesheet" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/icon.png" />
+    <link rel="icon" type="image/png" href="assets/images/icon.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="assets/images/icon.png" sizes="16x16" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
+    <!-- <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css"> -->
+    <link rel="stylesheet" href="./components/onsen-css-components.min.css">
+    <link rel="stylesheet" type="text/css" href="src/app.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""/>
+  </head>
+
+  <body>
+    <ons-navigator swipeable id="navigator" page="index.html"></ons-navigator>
+    <template id="index.html">
+      <ons-page id="home">
+        <ons-toolbar>
+          <div class="center">Week 10 Lab Locator</div>
+        </ons-toolbar>
+        <div class="map-container">
+          <div id="map"></div>
+          <div>
+          <ons-fab position="bottom right" id="locateBtn">
+            <ons-icon icon="md-search" ></ons-icon>
+          </ons-fab>
+          <ons-button id="deleteAllBtn">Delete All Markers</ons-button>
+          </div>
+        </div>
+      </ons-page>
+    </template>
+  </body>
+  <script src="https://unpkg.com/localforage@1.10.0/dist/localforage.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+  <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+  <script src="src/app.js"></script>
+  <script type="text/javascript">
+    const registerSW = async () => {
+      if ("serviceWorker" in navigator) {
+        try {
+          await navigator.serviceWorker.register(`${window.location.href}service-worker.js`);
+          console.log("Service Worker Registered");
+        } catch (e) {
+          console.error("Error registering Service Worker...", e);
+        }
+      }
+    };
+    registerSW();
+  </script>
+</html>
